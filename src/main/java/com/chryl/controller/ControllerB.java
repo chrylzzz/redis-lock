@@ -21,7 +21,8 @@ import java.util.concurrent.TimeUnit;
  * Created by Chryl on 2019/8/12.
  */
 @RestController
-public class Controller2 {
+@RequestMapping("/conb")
+public class ControllerB {
     @Autowired
     private Redisson redisson;
 
@@ -29,7 +30,7 @@ public class Controller2 {
     private StringRedisTemplate stringRedisTemplate;
 
     @RequestMapping("/redis-lock")
-    public Object show() throws InterruptedException {
+    public Object showZ() throws InterruptedException {
         //t-f保证一定会删除redisKey
         String redisLockKey = "product-id";
         String clientId = UUID.randomUUID().toString();
@@ -63,8 +64,6 @@ public class Controller2 {
              */
             lock.unlock();
         }
-
-
         return "ok";
     }
 }

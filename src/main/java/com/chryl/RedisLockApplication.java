@@ -19,6 +19,7 @@ public class RedisLockApplication {
         Config config = new Config();
         config.useSingleServer()
                 .setAddress("redis://192.168.228.128:6379")//redisson连接redis
+                .setPassword("123456")
                 .setDatabase(0);
         return (Redisson) Redisson.create(config);
     }

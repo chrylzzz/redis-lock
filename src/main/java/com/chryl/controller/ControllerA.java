@@ -13,13 +13,14 @@ import java.util.concurrent.TimeUnit;
  * Created by Chryl on 2019/8/12.
  */
 @RestController
-public class Controller {
+@RequestMapping("/cona")
+public class ControllerA {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     @RequestMapping("/redis-lock")
-    public Object show() {
+    public Object showA() {
         //t-f保证一定会删除redisKey
         String redisLockKey = "product-id";
         String clientId = UUID.randomUUID().toString();
