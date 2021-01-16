@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 问题:缓存和db双写不一致场景
+ * 1.读多写少场景:
  * redisson读写锁的使用:
  * 读写锁:只读的时候不加锁,只写的时候不加锁,读写操作一起执行就加锁,转为串行执行
  * <p>
