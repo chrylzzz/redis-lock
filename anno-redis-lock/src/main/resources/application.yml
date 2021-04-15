@@ -1,0 +1,11 @@
+server:
+  port: 8086
+spring:
+  cache:
+    type: redis
+    redis:
+      cache-null-values: true
+  redis:
+    redisson:
+      config: classpath:redisson.yml
+
