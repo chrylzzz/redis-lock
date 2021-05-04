@@ -16,6 +16,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 注意,锁的力度一定要细
  * Created by Chr.yl on 2020/6/5.
  *
  * @author Chr.yl
@@ -24,6 +25,14 @@ import java.util.concurrent.TimeUnit;
 @RestController
 public class RedissonController {
 
+    /**
+     * 解决缓存一致性:
+     * 双写模式: 改完db,改redis
+     * 失效模式: 改完db,删掉redis
+     * 上面两种方法,都无法保证,数据一致性,只有加锁,才能保证.但是加锁会导致系统笨重,
+     * 所以,如果写多,可以牺牲数据一致性.或者干脆不要用缓存了,直接用db.如果要用缓存,
+     * 最好的办法就是,缓存的时候加上过期时间.来保证数据最终一致性
+     */
 
     @Autowired
     private RedissonClient redissonClient;
@@ -160,4 +169,6 @@ public class RedissonController {
 
         return "ok";
     }
+
+
 }
